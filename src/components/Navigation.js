@@ -1,7 +1,8 @@
 import React from "react";
 import "./Navigation.css";
+const Navigation = (props) => {
+  const { locations, onLocationsChange } = props;
 
-function Navigation({ locations, onLocationsChange }) {
   function getClasses(ctx, index) {
     let classes = `material-icons ${ctx}`;
     if (ctx === "dots") {
@@ -26,7 +27,7 @@ function Navigation({ locations, onLocationsChange }) {
   }
 
   function moveUp(index) {
-    let allLocations = locations;
+    let allLocations = [...locations];
     let currentLocation = allLocations[index];
     allLocations[index] = allLocations[index - 1];
     allLocations[index - 1] = currentLocation;
@@ -34,7 +35,7 @@ function Navigation({ locations, onLocationsChange }) {
   }
 
   function moveDown(index) {
-    let allLocations = locations;
+    let allLocations = [...locations];
     let currentLocation = allLocations[index];
     allLocations[index] = allLocations[index + 1];
     allLocations[index + 1] = currentLocation;
@@ -93,6 +94,6 @@ function Navigation({ locations, onLocationsChange }) {
       </div>
     </div>
   );
-}
+};
 
 export default Navigation;
